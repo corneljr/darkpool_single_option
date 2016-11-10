@@ -1,10 +1,8 @@
 <ion-view title="Flight Details" id="page5">
     <ion-content padding="false" class="has-header">
-        <div class='{{flightType}}_background_image tier_header'>
-            <h3>{{tierDetails['title']}}</h3>
-            <h5>{{tierDetails['description']}}</h5>
+        <div class='info-container' style='padding:15px;'>
+            <p class='black' style='font-size:18px;'>Your flights will have the following details, and will be finalized at least a month before departure.</p>
         </div>
-
         <ion-list class='flight_detail_list'>
             <ion-item>
                 <div class='row'>
@@ -17,21 +15,25 @@
                 </div>
                 <div class='row'>
                     <div class='col'>
-                        <p class='black'>{{tripDetails.departureDate | date:'EEE MMM d, yyyy'}} <span ng-if='flightType == "whatever"'>+/- 3 days</span></p>
+                        <p class='black'>{{tripDetails.departureDate | date:'EEE MMM d, yyyy'}}</p>
                     </div>
                     <div class='col'>
-                        <p class='align-right black'>{{tripDetails.returnDate | date:'EEE MMM d, yyyy'}} <span ng-if='flightType == "whatever"'>+/- 3 days</span></p>
+                        <p class='align-right black'>{{tripDetails.returnDate | date:'EEE MMM d, yyyy'}}</p>
                     </div>
                 </div>
             </ion-item>
             <ion-item>
-                <div class='row'>
-                    <div class='col'>
+                <div class='row row-no-padding'>
+                    <div class='col' style='padding-left:10px;'>
                         <p>Price</p>
                     </div>
                     <div class='col'>
                         <p class='align-right black bold'>{{flightDetails[flightType]['tierPrice'] | currency:"$":0}} Roundtrip</p>
-                        <p class='align-right black'><strike style='color:red;'>{{flightDetails[flightType]['currentPrice'] | currency:"$":0}}</strike>&nbsp;Save {{flightDetails[flightType]['currentPrice'] - flightDetails[flightType]['tierPrice'] | currency:"$":0}}</p>
+                    </div>
+                </div>
+                <div class='row row-no-padding'>
+                    <div class='col'>
+                        <p class='align-right' style='color:red;position:relative;top:5px;'>Save {{flightDetails[flightType]['currentPrice'] - flightDetails[flightType]['tierPrice'] | currency:"$":0}} off the current lowest price</p>
                     </div>
                 </div>
             </ion-item>
@@ -78,18 +80,6 @@
             <ion-item>
                 <div class='row'>
                     <div class='col'>
-                        <p>Details</p>
-                    </div>
-                    <div class='col'>
-                        <p class='align-right black'>
-                            You will receive your ticket at least a month before departure. It is 100% guaranteed and your ticket is fully refundable. <span ng-if="flightType == 'whatever'">Your flight will depart +/- 3 days of the above dates and the trip length will remain the same.</span>
-                        </p>
-                    </div>
-                </div>
-            </ion-item>
-            <ion-item>
-                <div class='row'>
-                    <div class='col'>
                         <p style='text-align:center;'><a ng-click='openModal()'>View List of Potential Flights</a></p>
                     </div>
                 </div>
@@ -97,7 +87,7 @@
         </ion-list>
         <div style='height:50px;'></div>
     </ion-content>
-    <button ng-click="bookNow()" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block fixed-to-bottom">Book your Trip</button>
+    <button ng-click="bookNow()" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block fixed-to-bottom">Reserve this Price Now</button>
     <script id="howItWorks.html" type="text/ng-template">
         <ion-modal-view>
             <ion-header-bar>

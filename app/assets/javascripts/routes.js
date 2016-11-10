@@ -14,12 +14,6 @@ angular.module('app.routes', [])
     controller: 'homeCtrl'
   })
 
-  .state('timewarp', {
-    url: '/timewarp',
-    templateUrl: 'timewarp.html',
-    controller: 'timewarpCtrl'
-  })
-
   .state('addTravellers', {
     url: '/add-travellers/:type',
     templateUrl: 'addTravellers.html',
@@ -45,7 +39,7 @@ angular.module('app.routes', [])
     controller: 'flightDetailsCtrl'
   })
 
-$urlRouterProvider.otherwise('/timewarp')
+$urlRouterProvider.otherwise('/home')
 
   
 
