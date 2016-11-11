@@ -27,7 +27,7 @@ class ApiController < ApplicationController
 
 	  if parsed_response["transaction"]["succeeded"]
 	  	booking_id = "TW" + SecureRandom.random_number(1_000_000).to_s
-	  	output_to_spreadsheet(params[:travellers], params[:origin], params[:destination], params[:departure_date],params[:return_date],params[:tier], params[:amount], booking_id)
+	  	output_to_spreadsheet(params[:travellers], params[:origin], params[:destination], params[:departure_date],params[:return_date],params[:tier], params[:amount], booking_id, params[:current_price])
 
 	  	travellers = params[:travellers].map {|x| "#{x['firstName']} #{x['lastName']}"}.join(', ')
 	  	params[:travellers].each do |traveller|
