@@ -101,12 +101,15 @@ module Flights
 
 					flight_list['afternoon']["#{leg}"] << flight_info if flight_info['departureTime'].include?('pm')
 					flight_list['afternoon']['airlines'] << flight_info['airline'] if flight_info['departureTime'].include?('pm') && !flight_list['afternoon']['airlines'].include?(flight_info['airline'])
-				end
 
-				if flight_info['stops'] < 2
 					flight_list['anytime']["#{leg}"] << flight_info
 					flight_list['anytime']['airlines'] << flight_info['airline'] unless flight_list['anytime']['airlines'].include?(flight_info['airline'])
 				end
+
+				# if flight_info['stops'] < 2
+				# 	flight_list['anytime']["#{leg}"] << flight_info
+				# 	flight_list['anytime']['airlines'] << flight_info['airline'] unless flight_list['anytime']['airlines'].include?(flight_info['airline'])
+				# end
 
 				# leave this here for now and figure out how to handle 
 				flight_list['whatever']["#{leg}"] << flight_info
