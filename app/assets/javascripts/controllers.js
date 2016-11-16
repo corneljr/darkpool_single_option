@@ -11,7 +11,7 @@ function ($scope, $stateParams, $timeout, $window, Flights, $state) {
 
     $scope.bunnyIndex = 1
     $scope.bunnyUrl = ''
-    $scope.expiryDate = new Date("2016-11-15")
+    $scope.expiryDate = new Date("2016-11-20")
     $scope.countdown = "";
 
     var dateTicker = function() {
@@ -105,18 +105,23 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
       $scope.$on('$destroy', function() {
         $scope.modal.remove();
       });
-      // Execute action on hide modal
-      $scope.$on('modal.hidden', function() {
-        // Execute action
+
+      $ionicModal.fromTemplateUrl('faq.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.faqModal = modal;
       });
-      // Execute action on remove modal
-      $scope.$on('modal.removed', function() {
-        // Execute action
+      $scope.openFaqModal = function() {
+        $scope.faqModal.show();
+      };
+      $scope.closeFaqModal = function() {
+        $scope.faqModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.faqModal.remove();
       });
-      
-    $scope.slideChanged = function(index) {
-      $scope.slideIndex = index;
-    };
 
     $scope.titleText = function(leg) {
       if(leg == 'outbound') {
@@ -378,6 +383,23 @@ function ($scope, $state, $window, $stateParams, TravellerService, $ionicModal, 
       // Execute action on remove modal
       $scope.$on('modal.removed', function() {
         // Execute action
+      });
+
+      $ionicModal.fromTemplateUrl('faq.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.faqModal = modal;
+      });
+      $scope.openFaqModal = function() {
+        $scope.faqModal.show();
+      };
+      $scope.closeFaqModal = function() {
+        $scope.faqModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.faqModal.remove();
       });
  
 }])
