@@ -14,6 +14,18 @@ angular.module('app.routes', [])
     controller: 'homeCtrl'
   })
 
+  .state('flexibilitySelection', {
+    url: '/flexibility-selection',
+    templateUrl: 'flexibilitySelection.html',
+    controller: 'flexibilitySelectionCtrl'
+  })
+
+  .state('flightTypeSelection', {
+    url: '/flight-type-selection',
+    templateUrl: 'flightTypeSelection.html',
+    controller: 'flightTypeSelectionCtrl'
+  })
+
   .state('addTravellers', {
     url: '/add-travellers/:type',
     templateUrl: 'addTravellers.html',

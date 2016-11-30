@@ -6,12 +6,12 @@ angular.module('app.controllers', [])
 function ($scope, $stateParams, $timeout, $window, Flights, $state) {
     $scope.dataLoaded = false;
     $scope.letsDoThis = function() {
-        $state.go('flightDetails',{'type':'anytime'});
+        $state.go('flexibilitySelection');
     }
 
     $scope.bunnyIndex = 1
     $scope.bunnyUrl = ''
-    $scope.expiryDate = new Date("2016-11-20")
+    $scope.expiryDate = new Date("2016-12-20")
     $scope.countdown = "";
 
     var dateTicker = function() {
@@ -63,6 +63,80 @@ function ($scope, $stateParams, $timeout, $window, Flights, $state) {
     });
 }])
 
+.controller('flexibilitySelectionCtrl', ['$scope', '$stateParams', '$window','Flights', '$ionicModal', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
+
+    if (!Flights.flightDetails) {
+      $window.location = $window.location.origin + $window.location.search
+    }
+
+    $scope.tripDetails = Flights.tripDetails;
+    $scope.flexibleInfo = Flights.flightDetails['whatever']
+    $scope.strictInfo = Flights.flightDetails['anytype']
+
+    $scope.isFlexible = false
+    $scope.flexibleStyle = {'border':'1px solid #46abe1','background-color':'white'}
+    $scope.strictStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+
+    $scope.updateFlexibility = function(flexible) {
+      $scope.isFlexible = !flexible
+      if ($scope.isFlexible) {
+        $scope.strictStyle = {'border':'1px solid #46abe1','background-color':'white'}
+        $scope.flexibleStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+      } else {
+        $scope.flexibleStyle = {'border':'1px solid #46abe1','background-color':'white'}
+        $scope.strictStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+      }
+    }
+
+    $scope.flightTypeSelection = function() {
+
+      if($scope.isFlexible) {
+        $state.go('flightDetails',{'type':'whatever'});
+      } else {
+        $state.go('flightTypeSelection');
+      }
+    }
+}])
+
+.controller('flightTypeSelectionCtrl', ['$scope', '$stateParams', '$window','Flights', '$ionicModal', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
+
+    if (!Flights.flightDetails) {
+      $window.location = $window.location.origin + $window.location.search
+    }
+
+    $scope.nonstop = true
+    $scope.stopsStyle = {'border':'1px solid #46abe1','background-color':'white'}
+    $scope.directStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+
+    $scope.updateStops = function(nonstop) {
+      $scope.nonstop = !nonstop;
+      if ($scope.nonstop) {
+        $scope.stopsStyle = {'border':'1px solid #46abe1','background-color':'white'}
+        $scope.directStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+      } else {
+        $scope.directStyle = {'border':'1px solid #46abe1','background-color':'white'}
+        $scope.stopsStyle = {'border':'1px solid #7ab07e','background-color':'#7ab07e'}
+      }
+    }
+
+    $scope.flightDetails = function() {
+      if ($scope.nonstop) {
+        $state.go('flightDetails',{'type':'anytime'})
+      } else {
+        $state.go('flightDetails',{'type':'anytype'})
+      }
+    }
+
+    $scope.directInfo = Flights.flightDetails['anytime']
+    $scope.stopsInfo = Flights.flightDetails['anytype']
+}])
+
 .controller('flightDetailsCtrl', ['$scope', '$stateParams', '$window','Flights', '$ionicModal', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -72,7 +146,7 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
       $window.location = $window.location.origin + $window.location.search
     }
     
-    $scope.flightType = 'anytime';
+    $scope.flightType = $stateParams.type;
     $scope.flightDetails = Flights.flightDetails
     $scope.flightList = Flights.flightDetails[$scope.flightType];
     $scope.tripDetails = Flights.tripDetails;
