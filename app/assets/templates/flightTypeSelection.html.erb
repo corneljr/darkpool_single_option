@@ -6,7 +6,8 @@
             <br>
             <div class='row'>
                 <div class='col col-center'>
-                    <h4 class='no-margin normal-weight'>Only direct flights</h4>
+                    <h4 class='no-margin'>No</h4>
+                    <h5 class='no-margin normal-weight'>Only direct flights</h5>
                 	<h5 class='no-margin selection-price'>{{directInfo['tierPrice'] | currency:"$":0}}, save {{directInfo['currentPrice'] - directInfo['tierPrice'] | currency:"$":0}}</h5>
                 	
                 </div>
@@ -17,9 +18,11 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class='row'>
             	<div class='col col-center'>
-                    <h4 class='no-margin normal-weight'>Direct or one-stop flights</h4>
+                    <h4 class='no-margin'>Yes</h4>
+                    <h5 class='no-margin normal-weight'>Direct or one-stop flights</h5>
             		<h5 class='no-margin selection-price'>{{stopsInfo['tierPrice'] | currency:"$":0}}, save {{stopsInfo['currentPrice'] - stopsInfo['tierPrice'] | currency:"$":0}}</h5>
             	</div>
             	<div class='col col-center align-right'>

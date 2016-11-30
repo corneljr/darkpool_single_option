@@ -2,12 +2,17 @@
     <ion-content class='has-header'>
         <div class='selection-container'>
             <br>
-            <h3 class='align-center'>How flexible are your dates?</h3>
+            <h3 class='align-center'>Are your dates flexible?</h3>
             <br>
             <div class='row'>
                 <div class='col col-center'>
-                	<h4 class='no-margin selection-price normal-weight'>{{strictInfo['tierPrice'] | currency:"$":0}}, save {{strictInfo['currentPrice'] - strictInfo['tierPrice'] | currency:"$":0}}</h4>
-                	<h5 class='no-margin'>{{tripDetails['departureDate'] | date:'EEE, MMM d'}} - {{tripDetails['returnDate'] | date:'EEE, MMM d'}}</h5>
+                    <h4 class='no-margin'>No</h4>
+                	<h5 class='no-margin normal-weight'>
+                        {{tripDetails['departureDate'] | date:'EEE, MMM d'}} - {{tripDetails['returnDate'] | date:'EEE, MMM d'}}
+                    </h5>
+                	<h5 class='no-margin selection-price'>
+                        {{strictInfo['tierPrice'] | currency:"$":0}}, save {{strictInfo['currentPrice'] - strictInfo['tierPrice'] | currency:"$":0}}   
+                    </h5>
                 </div>
                 <div class='col col-center align-right'>
                     <div class='preference-checkbox' ng-style="strictStyle">
@@ -19,8 +24,13 @@
             <br>
             <div class='row'>
             	<div class='col col-center'>
-            		<h4 class='no-margin selection-price normal-weight'>{{flexibleInfo['tierPrice'] | currency:"$":0}}, save {{flexibleInfo['currentPrice'] - flexibleInfo['tierPrice'] | currency:"$":0}}</h4>
-            		<h5 class='no-margin'>+/- 1 day, same trip length</h5>
+                    <h4 class='no-margin'>Yes</h4>
+            		<h5 class='no-margin normal-weight'>
+                        +/- 1 day, same trip length      
+                    </h5>
+            		<h5 class='no-margin selection-price'>
+                        {{flexibleInfo['tierPrice'] | currency:"$":0}}, save {{flexibleInfo['currentPrice'] - flexibleInfo['tierPrice'] | currency:"$":0}}
+                    </h5>
             	</div>
             	<div class='col col-center align-right'>
             		<div class='preference-checkbox' ng-style="flexibleStyle">
