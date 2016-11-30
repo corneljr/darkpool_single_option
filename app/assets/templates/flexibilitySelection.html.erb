@@ -5,31 +5,13 @@
             <h3 class='align-center'>Are your dates flexible?</h3>
             <br>
             <div class='row'>
-                <div class='col col-center'>
-                    <h4 class='no-margin'>No</h4>
-                	<h5 class='no-margin normal-weight'>
-                        {{tripDetails['departureDate'] | date:'EEE, MMM d'}} - {{tripDetails['returnDate'] | date:'EEE, MMM d'}}
-                    </h5>
-                	<h5 class='no-margin selection-price'>
-                        {{strictInfo['tierPrice'] | currency:"$":0}}, save {{strictInfo['currentPrice'] - strictInfo['tierPrice'] | currency:"$":0}}   
-                    </h5>
-                </div>
-                <div class='col col-center align-right'>
-                    <div class='preference-checkbox' ng-style="strictStyle">
-                	   <input ng-click="updateFlexibility(isFlexible)" type="checkbox" id='preference-checkbox' ng-checked='!isFlexible'>
-                       <label for='preference-checkbox'></label>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class='row'>
             	<div class='col col-center'>
                     <h4 class='no-margin'>Yes</h4>
-            		<h5 class='no-margin normal-weight'>
-                        +/- 1 day, same trip length      
-                    </h5>
-            		<h5 class='no-margin selection-price'>
+                    <h4 class='no-margin selection-price normal-weight'>
                         {{flexibleInfo['tierPrice'] | currency:"$":0}}, save {{flexibleInfo['currentPrice'] - flexibleInfo['tierPrice'] | currency:"$":0}}
+                    </h4>
+            		<h5 class='no-margin normal-weight'>
+                        Trip can be shifted +/- 1 day. Will be the same trip length.
                     </h5>
             	</div>
             	<div class='col col-center align-right'>
@@ -38,6 +20,24 @@
                        <label for='preference-checkbox'></label>
                     </div>
             	</div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col col-center'>
+                    <h4 class='no-margin'>No</h4>
+                    <h4 class='no-margin selection-price normal-weight'>
+                        {{strictInfo['tierPrice'] | currency:"$":0}}, save {{strictInfo['currentPrice'] - strictInfo['tierPrice'] | currency:"$":0}}   
+                    </h4>
+                    <h5 class='no-margin normal-weight'>
+                        {{tripDetails['departureDate'] | date:'EEE, MMM d'}} - {{tripDetails['returnDate'] | date:'EEE, MMM d'}}
+                    </h5>
+                </div>
+                <div class='col col-center align-right'>
+                    <div class='preference-checkbox' ng-style="strictStyle">
+                       <input ng-click="updateFlexibility(isFlexible)" type="checkbox" id='preference-checkbox' ng-checked='!isFlexible'>
+                       <label for='preference-checkbox'></label>
+                    </div>
+                </div>
             </div>
         </div>
     </ion-content>

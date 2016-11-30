@@ -5,29 +5,28 @@
             <h3 class='align-center'>Are you okay with a layover?</h3>
             <br>
             <div class='row'>
-                <div class='col col-center'>
-                    <h4 class='no-margin'>No</h4>
-                    <h5 class='no-margin normal-weight'>Only direct flights</h5>
-                	<h5 class='no-margin selection-price'>{{directInfo['tierPrice'] | currency:"$":0}}, save {{directInfo['currentPrice'] - directInfo['tierPrice'] | currency:"$":0}}</h5>
-                	
-                </div>
-                <div class='col col-center align-right'>
-                    <div class='preference-checkbox' ng-style="directStyle">
-                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='nonstop'>
+            	<div class='col col-center'>
+                    <h4 class='no-margin'>Yes</h4>
+                    <h4 class='no-margin selection-price normal-weight'>{{stopsInfo['tierPrice'] | currency:"$":0}}, save {{stopsInfo['currentPrice'] - stopsInfo['tierPrice'] | currency:"$":0}}</h4>
+                    <h5 class='no-margin normal-weight'>Direct or one-stop flights</h5>
+            	</div>
+            	<div class='col col-center align-right'>
+                    <div class='preference-checkbox' ng-style="stopsStyle">
+                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='!nonstop'>
                        <label for='preference-checkbox-2'></label>
                     </div>
                 </div>
             </div>
             <br>
             <div class='row'>
-            	<div class='col col-center'>
-                    <h4 class='no-margin'>Yes</h4>
-                    <h5 class='no-margin normal-weight'>Direct or one-stop flights</h5>
-            		<h5 class='no-margin selection-price'>{{stopsInfo['tierPrice'] | currency:"$":0}}, save {{stopsInfo['currentPrice'] - stopsInfo['tierPrice'] | currency:"$":0}}</h5>
-            	</div>
-            	<div class='col col-center align-right'>
-                    <div class='preference-checkbox' ng-style="stopsStyle">
-                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='!nonstop'>
+                <div class='col col-center'>
+                    <h4 class='no-margin'>No</h4>
+                    <h4 class='no-margin selection-price normal-weight'>{{directInfo['tierPrice'] | currency:"$":0}}, save {{directInfo['currentPrice'] - directInfo['tierPrice'] | currency:"$":0}}</h4>
+                    <h5 class='no-margin normal-weight'>Only direct flights</h5>
+                </div>
+                <div class='col col-center align-right'>
+                    <div class='preference-checkbox' ng-style="directStyle">
+                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='nonstop'>
                        <label for='preference-checkbox-2'></label>
                     </div>
                 </div>
