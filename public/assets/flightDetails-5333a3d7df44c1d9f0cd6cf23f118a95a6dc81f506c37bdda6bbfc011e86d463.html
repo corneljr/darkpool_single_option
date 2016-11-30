@@ -1,0 +1,117 @@
+<ion-view title="Flight Details" id="page5">
+    <ion-content class="has-header">
+        <div style='padding:20px;'>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-plane' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4 style='color:#5e5e5e'>{{flightDetails.origin}} to {{flightDetails.destination}}</h4>
+                    <p class='no-margin'>{{tripDetails.departureDate | date:'EEE, MMM d'}} <span ng-if="tripType['type'] == 'whatever'">+/- 1 day</span></p>
+                    <p>Departing anytime during the day</p>
+                </div>
+            </div>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-plane' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4 style='color:#5e5e5e'>{{flightDetails.destination}} to {{flightDetails.origin}}</h4>
+                    <p class='no-margin'>{{tripDetails.returnDate | date:'EEE, MMM d'}} <span ng-if="tripType['type'] == 'whatever'">+/- 1 day</span></p>
+                    <p>Departing anytime during the day</p>
+                </div>
+            </div>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col'>
+                    <p class='align-center no-margin'><a ng-click='openModal()'>View List of Potential Flights</a></p>
+                </div>
+            </div>
+        </div>
+        <div class='row' style='background-color:#1b1a1e;color:white;'>
+            <div class='col-50 col-center'>
+                <img height='95' width='auto' src="/assets/TimeTravelDark-22305a87cd8bef610596313d6d34c507cc1fb2ea7160c3041da85312c2fd620e.jpg">
+            </div>
+            <div class='col-50 col-center'>
+                <h4 style='color:white;'>TimeWarp Fare!</h4>
+                <p>You'll get the full details at least one month before departure.</p>
+            </div>
+        </div>
+        <div style='padding:20px;'>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-refresh' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4>Number of Layovers</h4>
+                    <p>{{tierDetails['stops']}}</p>
+                </div>
+            </div>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-clock' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4>Max Travel Time</h4>
+                    <p>{{maxDurationString}}</p>
+                </div>
+            </div>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-plane' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4>Possible Airlines</h4>
+                    <p class='no-margin'>{{flightDetails[flightType]['airlines'].join(', ')}}</p>
+                </div>
+            </div>
+        </div>
+        <hr style='border:1px solid #f6f6f6'>
+        <div style='padding:20px'>
+            <div class='row' style='padding-bottom:10px;'>
+                <div class='col-10'>
+                    <i class='ion-card' style='font-size:20px;color:#d9d9d9;'></i>
+                </div>
+                <div class='col-90'>
+                    <h4>{{flightDetails[flightType]['tierPrice'] | currency:"$":0}} <span class='selection-price'>Saving {{flightDetails[flightType]['currentPrice'] - flightDetails[flightType]['tierPrice'] | currency:"$":0}}</span></h4>
+                    <p>Round Trip, Per Person</p>
+                </div>
+            </div>
+        </div>
+        <div style='height:50px;'></div>
+    </ion-content>
+    <button ng-click="bookNow()" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block fixed-to-bottom">Reserve this Price Now</button>
+    <script id="howItWorks.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <i style='font-size:20px;padding:5px;' ng-click="modal.hide()" class='ion-close'></i>
+            </ion-header-bar>
+                <ion-content>
+                    <ion-list>
+                    <div ng-repeat="leg in ['outbound','return']">
+                        <div class="info-container">
+                            <h4 style='margin-left:10px;margin-top:5px;margin-bottom:5px;'>{{leg}}</h4>
+                        </div>
+                        <ion-item ng-repeat="flight in flightList[leg]">
+                            <div class="row">
+                                <div class='col-10 col-center'>
+                                    <img height='25' width='auto' src={{flight.airline_image_url}}>
+                                </div>
+                                <div class="col col-center">
+                                    <p class='align-left' style='display:inline;'>{{flight.airline}}</p>
+                                </div>
+                                <div class="col col-center">
+                                    <p class="align-right" style="color:black;">{{flight.departureTime}} - {{flight.arrivalTime}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="align-right">{{flight.duration}}, <ng-pluralize count="flight.stops" when="{'1': '1 stop','other':'{} stops'}"></ng-pluralize></p>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </div>
+                    </ion-list>
+                </ion-content>
+          </ion-modal-view>
+    </script>
+</ion-view>

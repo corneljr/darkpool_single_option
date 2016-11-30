@@ -11,7 +11,7 @@ function ($scope, $stateParams, $timeout, $window, Flights, $state) {
 
     $scope.bunnyIndex = 1
     $scope.bunnyUrl = ''
-    $scope.expiryDate = new Date("2016-12-20")
+    $scope.expiryDate = new Date("2016-12-03")
     $scope.countdown = "";
 
     var dateTicker = function() {
@@ -99,6 +99,23 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
         $state.go('flightTypeSelection');
       }
     }
+
+    $ionicModal.fromTemplateUrl('faq.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.faqModal = modal;
+      });
+      $scope.openFaqModal = function() {
+        $scope.faqModal.show();
+      };
+      $scope.closeFaqModal = function() {
+        $scope.faqModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.faqModal.remove();
+      });
 }])
 
 .controller('flightTypeSelectionCtrl', ['$scope', '$stateParams', '$window','Flights', '$ionicModal', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -135,6 +152,23 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
 
     $scope.directInfo = Flights.flightDetails['anytime']
     $scope.stopsInfo = Flights.flightDetails['anytype']
+
+    $ionicModal.fromTemplateUrl('faq.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.faqModal = modal;
+      });
+      $scope.openFaqModal = function() {
+        $scope.faqModal.show();
+      };
+      $scope.closeFaqModal = function() {
+        $scope.faqModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.faqModal.remove();
+      });
 }])
 
 .controller('flightDetailsCtrl', ['$scope', '$stateParams', '$window','Flights', '$ionicModal', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -178,23 +212,6 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
       // Cleanup the modal when we're done with it!
       $scope.$on('$destroy', function() {
         $scope.modal.remove();
-      });
-
-      $ionicModal.fromTemplateUrl('faq.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.faqModal = modal;
-      });
-      $scope.openFaqModal = function() {
-        $scope.faqModal.show();
-      };
-      $scope.closeFaqModal = function() {
-        $scope.faqModal.hide();
-      };
-      // Cleanup the modal when we're done with it!
-      $scope.$on('$destroy', function() {
-        $scope.faqModal.remove();
       });
 
     $scope.titleText = function(leg) {
