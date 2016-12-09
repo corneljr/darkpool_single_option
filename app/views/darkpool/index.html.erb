@@ -51,8 +51,10 @@ mixpanel.init("57de26f3df9a4e9b56a939b5b0e983bb");</script><!-- end Mixpanel -->
     </div>
 </div>
   <script type="text/javascript">
+    var user_id=window.location.search.substring(1).split('&')[4].split('=')[1];
     window.Intercom("boot", {
-      app_id: "xjsya93x"
+      app_id: "xjsya93x", 
+      user_id: user_id
     });
   </script>
   </body>
