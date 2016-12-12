@@ -78,6 +78,7 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
     $scope.tripDetails = Flights.tripDetails;
     $scope.flexibleInfo = Flights.flightDetails['whatever']
     $scope.strictInfo = Flights.flightDetails['anytype']
+    $scope.nonstop_available = Flights.flightDetails['anytime'].airlines.length > 1
 
     $scope.isFlexible = false
     $scope.flexibleStyle = {'border':'1px solid #46abe1','background-color':'white'}
@@ -98,6 +99,8 @@ function ($scope, $stateParams, $window, Flights, $ionicModal, $state) {
 
       if($scope.isFlexible) {
         $state.go('flightDetails',{'type':'whatever'});
+      } else if (!$scope.nonstop_available) {
+        $state.go('flightDetails',{'type':'anytype'})
       } else {
         $state.go('flightTypeSelection');
       }

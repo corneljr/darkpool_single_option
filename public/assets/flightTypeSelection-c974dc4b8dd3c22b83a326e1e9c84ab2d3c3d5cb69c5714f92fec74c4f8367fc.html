@@ -1,0 +1,69 @@
+<ion-view title="Choose Preferences" id="page6">
+    <ion-content class='has-header'>
+        <div class='selection-container'>
+            <div class='row'>
+                <div class='col col-center'>
+                    <h3 class='align-center'>Are you okay with a layover?</h3>
+                </div>
+                <div class='col col-center'>
+                    <img class='travel-agent' src="/assets/travel_agent-ffafc88730b0d1b5be6d13b092e91128f73638a2d2990ee60409790aa95c0436.png">
+                </div>
+            </div>
+            <div class='row'>
+            	<div class='col col-center'>
+                    <h4 class='no-margin'>Yes</h4>
+                    <h4 class='no-margin selection-price normal-weight'>{{stopsInfo['tierPrice'] | currency:"$":0}}, save {{stopsInfo['currentPrice'] - stopsInfo['tierPrice'] | currency:"$":0}}</h4>
+                    <h5 class='no-margin normal-weight'>nonstop or one stop flights</h5>
+            	</div>
+            	<div class='col col-center align-right'>
+                    <div class='preference-checkbox' ng-style="stopsStyle">
+                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='!nonstop'>
+                       <label for='preference-checkbox-2'></label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col col-center'>
+                    <h4 class='no-margin'>No</h4>
+                    <h4 class='no-margin selection-price normal-weight'>{{directInfo['tierPrice'] | currency:"$":0}}, save {{directInfo['currentPrice'] - directInfo['tierPrice'] | currency:"$":0}}</h4>
+                    <h5 class='no-margin normal-weight'>Only nonstop flights</h5>
+                </div>
+                <div class='col col-center align-right'>
+                    <div class='preference-checkbox' ng-style="directStyle">
+                       <input ng-click="updateStops(nonstop)" type="checkbox" id='preference-checkbox-2' ng-checked='nonstop'>
+                       <label for='preference-checkbox-2'></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class='align-center'>
+            <a ng-click='openFaqModal()'>What is Flying with Hopper?</a>
+        </div>
+    </ion-content>
+    <button ng-click="flightDetails()" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block fixed-to-bottom">Confirm Preferences</button>
+
+    <script id="faq.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <i style='font-size:20px;padding:5px;' ng-click="faqModal.hide()" class='ion-close'></i>
+            </ion-header-bar>
+                <ion-content>
+                    <div class='info-container'>
+                        <h3 class='align-center'>FAQs</h3>
+                        <h4>How does this work?</h4>
+                        <p>Flight pricing can be very confusing and airlines make it hard to find a good price. By Flying with Hopper, you can purchase your flights today at a great price regardless of what the airlines are charging. You provide your flight preferences and pay that great price, and we take care of the rest. You will then receive your finalized flight itinerary at least a month before your departure date.</p>
+                        <br>
+                        <h4>What if I need to cancel or change my flights before I receive my flight confirmation?</h4>
+                        <p>Not a problem! By Flying with Hopper, you can change or cancel your booking any time until you receive your flight confirmation, and then for 24 hours afterwards with absolutely no fees or penalty.</p>
+                        <br>
+                        <h4>Still have questions?</h4>
+                        <p>Feel free to reach out to our Flights Specialist at josh@hopper.com with any other questions!</p>
+                        <br>
+                    </div>
+                </ion-content>
+          </ion-modal-view>
+    </script>
+</ion-view>
