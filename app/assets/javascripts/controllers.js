@@ -3,9 +3,7 @@ angular.module('app.controllers', [])
 .controller('homeCtrl', ['$scope', '$stateParams', '$timeout', '$window','Flights', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $timeout, $window, Flights, $state) {
-    window.Intercom("update");
-    
+function ($scope, $stateParams, $timeout, $window, Flights, $state) {  
     $scope.dataLoaded = false;
     $scope.letsDoThis = function() {
         $state.go('flexibilitySelection');
@@ -60,6 +58,9 @@ function ($scope, $stateParams, $timeout, $window, Flights, $state) {
       $scope.dataLoaded = true;
       mixpanel.register({"origin":$scope.flightDetails['origin'],"destination":$scope.flightDetails['destination'],"departure_date":$scope.flightDetails['departureDate'],"return_date":$scope.flightDetails['return_date'],"variation":"single_option"})
       mixpanel.track("timewarp-launched_timewarp")
+      window.Intercom("boot", {
+        app_id: "xjsya93x"
+      });
     }, function(error_response) {
       console.log(error_response);
     });
