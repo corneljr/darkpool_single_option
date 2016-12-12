@@ -5,16 +5,14 @@
     </div>
     <span id='image-data' data-image-1="<%= image_url('running-bunny-white-1.pdf') %>" data-image-2="<%= image_url('running-bunny-white-2.pdf') %>" data-image-3="<%= image_url('running-bunny-white-3.pdf') %>" data-image-4="<%= image_url('running-bunny-white-4.pdf') %>" data-image-5="<%= image_url('running-bunny-white-5.pdf') %>" data-image-6="<%= image_url('running-bunny-white-6.pdf') %>" data-image-7="<%= image_url('running-bunny-white-7.pdf') %>" data-image-8="<%= image_url('running-bunny-white-8.pdf') %>" data-image-9="<%= image_url('running-bunny-white-9.pdf') %>" data-image-10="<%= image_url('running-bunny-white-10.pdf') %>" data-image-11="<%= image_url('running-bunny-white-11.pdf') %>" data-image-12="<%= image_url('running-bunny-white-12.pdf') %>" data-image-13="<%= image_url('running-bunny-white-13.pdf') %>"></span>
     <ion-content>
-        <div class='home-info' style='background-color:#1b191d;'>
-            <img class='timewarp-image' src="<%= image_url('TimeTravelDark.jpg') %>">
+        <div class='home-info'>
+            <img class='timewarp-image' src="<%= image_url('hopair.png') %>">
             <div class='home-text'>
-                <h4>TimeWarp!</h4>
-                <h4>Save up to {{flightDetails['whatever']['currentPrice'] - flightDetails['whatever']['tierPrice'] | currency:"$":0}} per ticket!</h4>
+                <h3>Fly with Hopper!</h3>
                 <br>
-                <h5>No need to wait! Book your flights today at the low prices of the future. 100% guaranteed and fully refundable.</h5>
+                <h4>Save up to {{flightDetails['whatever']['currentPrice'] - flightDetails['whatever']['tierPrice'] | currency:"$":0}} per ticket by letting the bunny choose your flights.</h4>
                 <br>
-                <h5>TimeWarp closes in:<h5> 
-                <h4>{{countdown}}</h4>
+                <h5>100% guaranteed and fully refundable.</h5>
             </div>
         </div>
     </ion-content>

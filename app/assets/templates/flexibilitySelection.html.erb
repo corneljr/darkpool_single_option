@@ -1,9 +1,14 @@
 <ion-view title="Choose Preferences" id="page6">
     <ion-content class='has-header'>
         <div class='selection-container'>
-            <br>
-            <h3 class='align-center'>Are your dates flexible?</h3>
-            <br>
+            <div class='row'>
+                <div class='col col-center'>
+                    <h3 class='align-center'>Are your dates flexible?</h3>
+                </div>
+                <div class='col col-center'>
+                    <img class='travel-agent' src="<%= image_url('travel_agent.png') %>">
+                </div>
+            </div>
             <div class='row'>
             	<div class='col col-center'>
                     <h4 class='no-margin'>Yes</h4>
@@ -43,7 +48,7 @@
         <br>
         <br>
         <div class='align-center'>
-            <a ng-click='openFaqModal()'>What is Timewarp?</a>
+            <a ng-click='openFaqModal()'>What is Flying with Hopper?</a>
         </div>
     </ion-content>
     <button ng-click="flightTypeSelection()" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block fixed-to-bottom">{{isFlexible ? "Confirm Preferences":"Choose Flight Type"}}</button>
@@ -56,16 +61,13 @@
                 <ion-content>
                     <div class='info-container'>
                         <h3 class='align-center'>FAQs</h3>
-                        <h4>If I pay the price shown now, when will I actually receive my flight confirmation and details?</h4>
-                        <p>You will receive a Hopper receipt immediately with a Hopper Booking Confirmation Number. You will then receive your flight confirmation and details at least a month before your departure date.</p>
+                        <h4>How does this work?</h4>
+                        <p>Flight pricing can be very confusing and airlines make it hard to find a good price. By Flying with Hopper, you can purchase your flights today at a great price regardless of what the airlines are charging. You provide your flight preferences and pay that great price, and we take care of the rest. You will then receive your finalized flight itinerary at least a month before your departure date.</p>
                         <br>
-                        <h4>Can I get a full refund if I cancel at any point before I receive my flight confirmation?</h4>
-                        <p>Yes! Your Timewarp Fare is fully changeable and refundable until your flights are finalized and then for 24 hours afterwards.</p>
+                        <h4>What if I need to cancel or change my flights before I receive my flight confirmation?</h4>
+                        <p>Not a problem! By Flying with Hopper, you can change or cancel your booking any time until you receive your flight confirmation, and then for 24 hours afterwards with absolutely no fees or penalty.</p>
                         <br>
-                        <h4>How can you guarentee this price?</h4>
-                        <p>Using our prediction algorithm, we are able to accurately predict the future prices of flights. We know that buying flights is typically the first step of planning a trip, so we wanted allow you to buy them immediately while still being able to take advantage of our predictions! If our predictions end up being wrong, we will pay the extra cost. Your flights and this price are 100% guaranteed.</p>
-                        <br>
-                        <h4>More Questions?</h4>
+                        <h4>Still have questions?</h4>
                         <p>Feel free to reach out to our Timewarp Specialist at josh@hopper.com with any other questions!</p>
                         <br>
                     </div>
