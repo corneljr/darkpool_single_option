@@ -7,7 +7,7 @@
                 </div>
                 <div class='col-90'>
                     <h4 style='color:#5e5e5e'>{{flightDetails.origin}} to {{flightDetails.destination}}</h4>
-                    <p class='no-margin'>{{tripDetails.departureDate | date:'EEE, MMM d'}} <span ng-if="tripType['type'] == 'whatever'">+/- 1 day</span></p>
+                    <p class='no-margin'>{{tripDetails.departureDate | date:'EEE, MMM d'}} <span ng-if="flightType == 'whatever'">+/- 1 day</span></p>
                     <p>Departing anytime during the day</p>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class='col-90'>
                     <h4 style='color:#5e5e5e'>{{flightDetails.destination}} to {{flightDetails.origin}}</h4>
-                    <p class='no-margin'>{{tripDetails.returnDate | date:'EEE, MMM d'}} <span ng-if="tripType['type'] == 'whatever'">+/- 1 day</span></p>
+                    <p class='no-margin'>{{tripDetails.returnDate | date:'EEE, MMM d'}} <span ng-if="flightType == 'whatever'">+/- 1 day</span></p>
                     <p>Departing anytime during the day</p>
                 </div>
             </div>
